@@ -38,9 +38,8 @@ pin = 21
 def open_door():
     ''' function to open Mail box door '''
     #new part
-    for i in range(10):
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
 
     temp1=1
     x='z'
@@ -55,9 +54,8 @@ def close_door():
     ''' function to close Mail box door '''
     #TODO: Fugure out revere motor control
     #new part
-    for i in range(10):
-        GPIO.output(in1,GPIO.LOW)
-        GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
 
     temp1=0
     x='z'
