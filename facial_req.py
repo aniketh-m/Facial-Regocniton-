@@ -38,10 +38,10 @@ pin = 21
 def open_door():
     ''' function to open Mail box door '''
     #new part
-    GPIO.output(in1,GPIO.HIGH)
-    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
 
-    temp1=1
+    temp1=0
     x='z'
         #end of new part
     #motor_on(pin)
@@ -54,10 +54,10 @@ def close_door():
     ''' function to close Mail box door '''
     #TODO: Fugure out revere motor control
     #new part
-    GPIO.output(in1,GPIO.LOW)
-    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
 
-    temp1=0
+    temp1=1
     x='z'
         #end of new part
     #motor_on(pin)
@@ -101,7 +101,7 @@ while True:
     # compute the facial embeddings for each face bounding box
     encodings = face_recognition.face_encodings(frame, boxes)
     names = []
-    print(encodings)
+    #print(encodings)
     # loop over the facial embeddings
     for encoding in encodings:
         # attempt to match each face in the input image to our known
@@ -130,13 +130,9 @@ while True:
             name = max(counts, key=counts.get)
     
             #If someone in your dataset is identified, print their name on the screen  *** this maybe should be taken out           since motor crtl is above ***
-            if currentname != name:
-                currentname = name
-                print(currentname)
-
-        open_door()
-        time.sleep(30)
-        close_door()
+            open_door()
+            time.sleep(30)
+            close_door()
 
         # update the list of names
         names.append(name)
