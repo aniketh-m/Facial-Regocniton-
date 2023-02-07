@@ -11,6 +11,9 @@ import cv2
 
 #from motorcontrol import motor_on, motor_off
 
+#message imports
+import http.client, urllib
+
 
 #start of the motor control imports
 import RPi.GPIO as GPIO          
@@ -47,8 +50,18 @@ def open_door():
     #motor_on(pin)
     #time.sleep(4.8)
     #motor_off(pin)
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
+    conn.request("POST", "/1/messages.json",
+        urllib.parse.urlencode({
+            "token": "an1dqxb4ejf1rjdpxq7ofopvzm31f7",
+            "user": "uf1kmr522vv4x6gm76fj9g96s67qwo",
+            "message": "Enclosure has been unlocked",
+        }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
+
    
-    print('Hey! Open Sesame!!')
+    print('Hey! Door Unlocked!!')
+    
    
 def close_door():
     ''' function to close Mail box door '''
@@ -63,8 +76,16 @@ def close_door():
     #motor_on(pin)
     #time.sleep(4.8)
     #motor_off(pin)
+    conn = http.client.HTTPSConnection("api.pushover.net:443")
+    conn.request("POST", "/1/messages.json",
+        urllib.parse.urlencode({
+            "token": "an1dqxb4ejf1rjdpxq7ofopvzm31f7",
+            "user": "uf1kmr522vv4x6gm76fj9g96s67qwo",
+            "message": "Enclosure has been Locked",
+        }), { "Content-type": "application/x-www-form-urlencoded" })
+    conn.getresponse()
    
-    print('Hey! Close Sesame!!')
+    print('Hey! Door Locked!!')
 
 
 #Initialize 'currentname' to trigger only when a new person is identified.
