@@ -1,0 +1,7 @@
+opencv-python
+face_recognition
+imutils
+requests
+picamera
+wheel
+RPi.GPIO
