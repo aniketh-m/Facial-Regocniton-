@@ -8,7 +8,7 @@ import pickle
 import cv2
 import os
 
-# our images are located in the dataset folder
+# images located in the dataset folder
 print("[INFO] start processing faces...")
 imagePaths = list(paths.list_images("dataset"))
 
@@ -23,13 +23,13 @@ for (i, imagePath) in enumerate(imagePaths):
 		len(imagePaths)))
 	name = imagePath.split(os.path.sep)[-2]
 
-	# load the input image and convert it from RGB (OpenCV ordering)
+	# load the input image and convert it from RGB 
 	# to dlib ordering (RGB)
 	image = cv2.imread(imagePath)
 	rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 	# detect the (x, y)-coordinates of the bounding boxes
-	# corresponding to each face in the input image
+	# corresponding face in the input image
 	boxes = face_recognition.face_locations(rgb,
 		model="hog")
 
