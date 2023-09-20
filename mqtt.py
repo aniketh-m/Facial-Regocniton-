@@ -82,7 +82,7 @@ def close_door():
 clientName = "RPI"
 
 #MQTT server ip
-serverAddress = "192.168.6.170"
+serverAddress = "###.###.#.###"
 
 #Ecplise as mqttClient
 mqttClient = mqtt.Client(clientName)
